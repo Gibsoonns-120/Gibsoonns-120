@@ -1,0 +1,22 @@
+name: Test
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print a message
+        run: echo 'Hello, world!'
+        shell: bash
+      - name: Output JSON
+        run: echo "{""readme": "Karli Klein's GitHub profile is awesome!""}" | jq .
+        shell: bash
+      - name: Save output to file
+        run: echo "{""readme": "Karli Klein's GitHub profile is awesome!""}" > output.json
+        shell: bash
+      - name: Print output
+        run: cat output.json
+        shell: bash
